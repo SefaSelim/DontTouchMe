@@ -19,6 +19,6 @@ public class LoadingNextScene : MonoBehaviour
 
     public void LoadPartI()
     {
-        SceneManager.LoadScene("Part I Velocity");
+        SceneManager.LoadScene("Tutorial");
     }
 }

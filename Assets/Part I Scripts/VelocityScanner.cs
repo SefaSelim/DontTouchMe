@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class VelocityScanner : MonoBehaviour
 {
+    public bool shouldSkipTexts;
     [SerializeField] private TMP_Text MaxSpeedText;
     [SerializeField] private TMP_Text WhatShouldYouDoText;
 
@@ -21,7 +22,6 @@ public class VelocityScanner : MonoBehaviour
     {
         firstPosition = this.transform.position;
         lastPosition = firstPosition;
-        WhatShouldYouDoText.text = "GET OVER "+ Target +" SPEED";
     }
 
     // Update is called once per frame
@@ -65,14 +65,20 @@ public class VelocityScanner : MonoBehaviour
 
     void Won()
     {
-        WhatShouldYouDoText.text = "";
-        WhatShouldYouDoText.color = Color.black;
+        if (!shouldSkipTexts)
+        {
+            WhatShouldYouDoText.text = "";
+            WhatShouldYouDoText.color = Color.black;
+        }
         _animator.SetBool("IsJumped",true);
     }
 
     void UpdateText()
     {
-        MaxSpeedText.text = MaxSpeed.ToString();
+        if (!shouldSkipTexts)
+        {
+            MaxSpeedText.text = MaxSpeed.ToString();
+        }
     }
     
     

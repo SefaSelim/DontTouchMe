@@ -7,12 +7,15 @@ public class ShootUptoMouse : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D _rb;
     private Vector3 MousePosition;
-
+    public Vector3 shootVector;
+    
     private void OnMouseOver()
     {
         MousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 Distance = MousePosition - this.transform.position;
-        Vector3 shootVector = -Distance.normalized;
+        shootVector = -Distance.normalized;
         _rb.AddForce(shootVector);
     }
+
+
 }
