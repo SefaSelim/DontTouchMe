@@ -9,6 +9,7 @@ public class VelocityScanner : MonoBehaviour
     public bool shouldSkipTexts;
     [SerializeField] private TMP_Text MaxSpeedText;
     [SerializeField] private TMP_Text WhatShouldYouDoText;
+    [SerializeField] private Rigidbody2D _rb;
 
     [SerializeField] private Animator _animator;
     
@@ -16,35 +17,15 @@ public class VelocityScanner : MonoBehaviour
     private float MaxSpeed = 0;
     public float Target;
     
-    private Vector3 firstPosition,lastPosition;
-    private bool forOnce = true;
-    void Start()
-    {
-        firstPosition = this.transform.position;
-        lastPosition = firstPosition;
-    }
 
     // Update is called once per frame
     void Update()
     {
-        if (forOnce)
-        {
-            lastPosition = this.transform.position;
-            forOnce = false;
-        }
-        else
-        {
-            firstPosition = lastPosition;
-            lastPosition = this.transform.position;
-        }
         
         //CALCULATIONS
+        Speed = _rb.velocity.magnitude;
 
-        Vector3 SpeedVector = lastPosition - firstPosition;
-
-        Speed = (Mathf.Sqrt(Mathf.Pow(SpeedVector.x, 2) + Mathf.Pow(SpeedVector.y, 2)))/Time.deltaTime;
-
-        if (Speed > MaxSpeed)
+       
         {
             MaxSpeed = (int)Speed;
             UpdateText();

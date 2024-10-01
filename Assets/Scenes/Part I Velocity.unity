@@ -2318,6 +2318,7 @@ MonoBehaviour:
   shouldSkipTexts: 0
   MaxSpeedText: {fileID: 168126287}
   WhatShouldYouDoText: {fileID: 72457046}
+  _rb: {fileID: 2045855629}
   _animator: {fileID: 897142379}
   Target: 30
 --- !u!114 &2045855632
